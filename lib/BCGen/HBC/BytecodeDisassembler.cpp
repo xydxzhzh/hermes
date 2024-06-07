@@ -313,7 +313,7 @@ static std::string bigintMagnitudeToLengthLimitedString(
           bigint::OperationStatus::RETURNED)) {
     value = "error printing bigint";
   }
-  static constexpr size_t LEN_LIMIT = 16;
+  static constexpr size_t LEN_LIMIT = 256;
   const size_t numValueDigits = value.size() - (value[0] == '-' ? 1 : 0);
   const bool tooLong = numValueDigits > LEN_LIMIT;
   if (tooLong) {
@@ -680,7 +680,7 @@ void PrettyDisassembleVisitor::dumpOperandString(
     StringID stringID,
     raw_ostream &OS) {
   // After this limit we truncate the string.
-  static constexpr unsigned LEN_LIMIT = 16;
+  static constexpr unsigned LEN_LIMIT = 256;
   unsigned len = 0;
 
   os_ << '"';
